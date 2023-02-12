@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">MessengerChat</string>
+
+    // For SIGN IN Activity
+    <string name="usernameHint">Username</string>
+    <string name="passwordHint">Password</string>
+    <string name="signIn">SIGN IN</string>
+    <string name="signUp">SIGN UP</string>
+    <string name="textAccount">Don\'t have account? </string>
+    <string name="textMessage1">User not found! \nPlease try again or register! </string>
+
+    // For REGISTER Activity
+    <string name="textRegistration">Registration</string>
+    <string name="textRegister">Register</string>
+    <string name="emailRegister">Email</string>
+    <string name="confirmPassword">Confirm password</string>
+    <string name="helperTextPassword">password length 5 – 18 symbols</string>
+    <string name="helperConfirmPassword">repeat password</string>
+    <string name="helperTextUsername">username length 0 – 18 symbols</string>
+    <string name="textMessage2">Username or password already exists!</string>
+    <string name="textMessage3">User with this email already exists!</string>
+    <string name="textMessage4">Email is not valid!</string>
+    <string name="textMessage5">The password is not correct!</string>
+    <string name="selectPhoto">SELECT PHOTO</string>
+
+    // For Chat MENU
+    <string name="textLogout">Log out</string>
+
+    // For activity_correspondence
+    <string name="hintMessage">Type a message</string>
+
+    // For activity_sent_message
+    <string name="textSentMessage">Sent message</string>
+    <string name="textReceiveMessage">Receive message</string>
+
+</resources>
