@@ -6,9 +6,6 @@ import java.util.regex.Pattern;
 
 
 public class User implements Serializable {
-    public String getUid() {
-        return uid;
-    }
 
     private String uid;
     private String username;
@@ -40,6 +37,10 @@ public class User implements Serializable {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getUid() {
+        return uid;
     }
 
     public void setUsername(String username) {

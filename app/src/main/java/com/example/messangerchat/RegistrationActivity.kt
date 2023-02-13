@@ -12,8 +12,7 @@ import android.util.Log
 import android.view.View
 import com.example.messangerchat.classes.User
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.usernameRegisterEditText
@@ -25,9 +24,9 @@ import kotlin.collections.ArrayList
 @Suppress("DEPRECATION")
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var dbRef: DatabaseReference
+    private lateinit var users: ArrayList<User>
     private val REGISTER_LOG = "Registration"
     var selectPhotoUri: Uri? = null
-    var users: ArrayList<User>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +34,19 @@ class RegistrationActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        users = intent.getSerializableExtra("DataUsers") as ArrayList<User>
+        dbRef = FirebaseDatabase.getInstance().reference
+        users = ArrayList()
+
+        dbRef.child("user").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (child in snapshot.children) {
+                    val currentUser = child.getValue(User::class.java)
+                    users.add(currentUser!!)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
 
         // for focus (change background fields)
         usernameRegisterEditText.setOnFocusChangeListener { _, _ ->
@@ -75,7 +86,6 @@ class RegistrationActivity : AppCompatActivity() {
             }
             4 -> {
                 clearFields()
-
                 showErrorMessage(getString(R.string.textMessage4))
             }
             5 -> {
@@ -123,8 +133,7 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun addUserToDatabase(uid: String, username: String, password: String, email: String) {
-        dbRef = FirebaseDatabase.getInstance().reference
-        dbRef.child("user").child(uid).setValue(User(uid,username,password, email))
+        dbRef.child("user").child(uid).setValue(User(uid, username, password, email))
     }
 
     private fun checkFieldsOnNullOrEmpty(): Boolean {
