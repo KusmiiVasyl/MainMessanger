@@ -92,9 +92,12 @@ class RegistrationActivity : AppCompatActivity() {
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         if (!it.isSuccessful) return@addOnCompleteListener
-                        Log.d(REGISTER_LOG, "Successfully create user: ${it.result.user!!.uid}")
-                        addSelectPhotoToFirebaseStorage()
-                        addUserToDatabase(it.result.user!!.uid, username, password, email)
+                        addUserToDatabase(
+                            it.result.user!!.uid,
+                            username,
+                            password,
+                            email
+                        )
                         startActivity(Intent(this, MainActivity::class.java))
                         finish()
                     }
@@ -122,18 +125,26 @@ class RegistrationActivity : AppCompatActivity() {
         }
     }
 
-    private fun addSelectPhotoToFirebaseStorage() {
-        if (selectPhotoUri == null) return
+    private fun addUserToDatabase(
+        uid: String,
+        username: String,
+        password: String,
+        email: String
+    ) {
+        if (selectPhotoUri == null) {
+            dbRef.child("user").child(uid)
+                .setValue(User(uid, username, password, email, ""))
+            return
+        }
         val filename = UUID.randomUUID().toString()
-        val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
-        ref.putFile(selectPhotoUri!!)
+        val refStorage = FirebaseStorage.getInstance().getReference("/images/$filename")
+        refStorage.putFile(selectPhotoUri!!)
             .addOnSuccessListener {
-                Log.d(REGISTER_LOG, "Successfully upload image ${it.metadata?.path}")
+                refStorage.downloadUrl.addOnSuccessListener {
+                    dbRef.child("user").child(uid)
+                        .setValue(User(uid, username, password, email, it.toString()))
+                }
             }
-    }
-
-    private fun addUserToDatabase(uid: String, username: String, password: String, email: String) {
-        dbRef.child("user").child(uid).setValue(User(uid, username, password, email))
     }
 
     private fun checkFieldsOnNullOrEmpty(): Boolean {
@@ -165,7 +176,7 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun showErrorMessage(message: String) {
-        twRegistration.visibility = View.GONE
+        btn_select_photo.visibility = View.GONE
         buttonRegister.isEnabled = false
         message_2.text = message
         message_2.visibility = View.VISIBLE
@@ -181,7 +192,7 @@ class RegistrationActivity : AppCompatActivity() {
             override fun onFinish() {
                 message_2.visibility = View.GONE
                 message_2.alpha = 1.0f
-                twRegistration.visibility = View.VISIBLE
+                btn_select_photo.visibility = View.VISIBLE
                 buttonRegister.isEnabled = true
             }
         }.start()

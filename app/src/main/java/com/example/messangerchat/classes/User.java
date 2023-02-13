@@ -11,6 +11,7 @@ public class User implements Serializable {
     private String username;
     private String password;
     private String email;
+    private String profilePhotoUrl;
 
     public User() {}
 
@@ -20,11 +21,12 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public User(String uid, String username, String password, String email) {
+    public User(String uid, String username, String password, String email, String profilePhotoUrl) {
         this.uid = uid;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.profilePhotoUrl = profilePhotoUrl;
     }
 
     public String getUsername() {
@@ -43,16 +45,8 @@ public class User implements Serializable {
         return uid;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public String getProfilePhotoUrl() {
+        return profilePhotoUrl;
     }
 
     public static boolean isUserExist(String username, String password, ArrayList<User> users) {
