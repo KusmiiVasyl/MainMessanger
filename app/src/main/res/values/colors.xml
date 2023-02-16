@@ -16,5 +16,7 @@
     <color name="colorBoxMessage">#CDFF0000</color>
     <color name="light_red">#CDFB8A8A</color>
     <color name="color_sent_message">#6b6b47</color>
-    <color name="color_receive_message">#4d4d33</color>
+    <color name="color_receive_message">#43432F</color>
+    <color name="color_red">#e60000</color>
+    <color name="color_green">#33cc33</color>
 </resources>

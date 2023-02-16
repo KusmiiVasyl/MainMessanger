@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CorrespondenceActivity">
+    tools:context=".CorrespondenceActivity"
+    android:background="@color/black">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewChat"
@@ -28,6 +29,8 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="90"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:background="@drawable/message_box_background"
             android:layout_marginLeft="10dp"
             android:paddingLeft="10dp"

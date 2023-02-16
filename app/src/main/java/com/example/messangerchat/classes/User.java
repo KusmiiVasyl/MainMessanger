@@ -12,8 +12,10 @@ public class User implements Serializable {
     private String password;
     private String email;
     private String profilePhotoUrl;
+    private Boolean isOnline = false;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String username, String password, String email) {
         this.username = username;
@@ -47,6 +49,14 @@ public class User implements Serializable {
 
     public String getProfilePhotoUrl() {
         return profilePhotoUrl;
+    }
+
+    public Boolean getOnline() {
+        return isOnline;
+    }
+
+    public void setOnline(Boolean online) {
+        isOnline = online;
     }
 
     public static boolean isUserExist(String username, String password, ArrayList<User> users) {

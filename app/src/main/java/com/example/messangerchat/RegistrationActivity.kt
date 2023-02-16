@@ -122,6 +122,7 @@ class RegistrationActivity : AppCompatActivity() {
             val bitmapDrawable = BitmapDrawable(bitmap)
             btn_select_photo.setImageDrawable(null)
             btn_select_photo.setBackgroundDrawable(bitmapDrawable)
+            data.data = null
         }
     }
 
@@ -132,7 +133,8 @@ class RegistrationActivity : AppCompatActivity() {
         email: String
     ) {
         if (selectPhotoUri == null) {
-            dbRef.child("user").child(uid)
+            dbRef.child("user")
+                .child(uid)
                 .setValue(User(uid, username, password, email, ""))
             return
         }

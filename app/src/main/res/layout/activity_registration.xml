@@ -7,7 +7,6 @@
     android:background="@color/black"
     tools:context=".MainActivity">
 
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
@@ -32,8 +31,8 @@
             android:id="@+id/twRegistration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="0.2"
+            android:gravity="center"
             android:text="@string/textRegistration"
             android:textColor="@color/light_orange"
             android:textSize="40sp" />
@@ -41,34 +40,33 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="20dp"
+            android:layout_weight="0.2">
 
-            <ImageButton
+            <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:id="@+id/btn_select_photo"
-                style="@style/ButtonSelectPhoto"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/icon_photo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center"
-                android:layout_margin="30dp"
-                android:layout_weight="0"
+                android:background="@drawable/btn_round_select_photo"
                 android:onClick="onClickButtonSelectPhoto"
+                android:src="@drawable/ic_baseline_photo_library_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:roundPercent="1" />
 
             <TextView
                 android:id="@+id/message_2"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                android:textAlignment="center"
                 android:layout_margin="30dp"
                 android:background="@color/colorBoxMessage"
                 android:padding="10dp"
                 android:text="@string/textMessage1"
+                android:textAlignment="center"
                 android:textColor="@color/colorMessage"
                 android:textSize="20sp"
                 android:textStyle="bold|italic"
@@ -84,11 +82,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-
-
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+
+
+            android:layout_marginRight="20dp"
+            android:layout_weight="0.5">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/usernameRegisterInputLayout"
@@ -101,10 +99,10 @@
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/light_orange"
                 app:counterEnabled="true"
-                app:helperText="@string/helperTextUsername"
-                app:helperTextTextColor="@color/light_orange"
                 app:counterMaxLength="18"
                 app:counterTextColor="@color/light_orange"
+                app:helperText="@string/helperTextUsername"
+                app:helperTextTextColor="@color/light_orange"
                 app:hintTextColor="@color/dark_orange"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -132,13 +130,13 @@
                 app:boxBackgroundColor="@color/light_grey"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/light_orange"
+                app:counterEnabled="true"
                 app:counterMaxLength="18"
                 app:counterTextColor="@color/light_orange"
                 app:endIconMode="password_toggle"
                 app:helperText="@string/helperTextPassword"
                 app:helperTextEnabled="true"
                 app:helperTextTextColor="@color/light_orange"
-                app:counterEnabled="true"
                 app:hintTextColor="@color/dark_orange"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -166,14 +164,14 @@
                 app:boxBackgroundColor="@color/light_grey"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/light_orange"
+                app:counterEnabled="true"
                 app:counterMaxLength="18"
                 app:counterTextColor="@color/light_orange"
                 app:endIconMode="password_toggle"
-                app:hintTextColor="@color/dark_orange"
                 app:helperText="@string/helperConfirmPassword"
                 app:helperTextEnabled="true"
                 app:helperTextTextColor="@color/light_orange"
-                app:counterEnabled="true"
+                app:hintTextColor="@color/dark_orange"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/passwordRegisterInputLayout"

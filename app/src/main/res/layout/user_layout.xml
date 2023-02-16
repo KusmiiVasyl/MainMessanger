@@ -1,23 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/black">
 
-        <TextView
-            android:id="@+id/tvUsername"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayoutUserList"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="User"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"/>
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/photoUser"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/btn_round_select_photo"
+                    android:onClick="onClickButtonSelectPhoto"
+                    android:src="@drawable/ic_baseline_photo_library_24" />
+
+                <TextView
+                    android:id="@+id/tvUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="fill_vertical"
+                    android:text="User"
+                    android:layout_weight="30"
+                    android:textColor="@color/light_orange"
+                    android:textSize="35sp"
+                    android:paddingTop="10dp"
+                    android:textStyle="bold|italic" />
+
+                <ImageView
+                    android:id="@+id/markOnline"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/mark_ofline" />
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1.5dp"
             android:layout_marginTop="5dp"
             android:background="@color/light_orange"
-            android:layout_below="@id/tvUsername"/>
+            android:layout_below="@id/linearLayoutUserList"/>
 
 </RelativeLayout>

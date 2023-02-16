@@ -3,6 +3,8 @@ package com.example.messangerchat
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.messangerchat.classes.Message
 import com.example.messangerchat.classes.MessageAdapter
@@ -48,6 +50,7 @@ class CorrespondenceActivity : AppCompatActivity() {
                         val message = child.getValue(Message::class.java)
                         messageList.add(message!!)
                     }
+                    recyclerViewChat.scrollToPosition(messageList.size - 1) //TO DO
                     messageAdapter.notifyDataSetChanged()
                 }
 
@@ -57,6 +60,7 @@ class CorrespondenceActivity : AppCompatActivity() {
 
         // add messages to Firebase database
         imageViewSent.setOnClickListener {
+            if(editTextMessageBox.text.toString() == "") return@setOnClickListener
             dbRef.child("chats")
                 .child(sentStorage!!)
                 .child("messages").push()
