@@ -1,18 +1,16 @@
 package com.example.messangerchat
 
-import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.chatmessenger.classes.UserAdapter
 import com.example.messangerchat.classes.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.snapshots
 import kotlinx.android.synthetic.main.activity_chat.*
 
 
@@ -32,8 +30,18 @@ class ChatActivity : AppCompatActivity() {
         userAuth = FirebaseAuth.getInstance()
         dbRef = FirebaseDatabase.getInstance().reference
 
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#331f00")))
+        dbRef.child("user")
+            .child(userAuth.uid.toString())
+            .child("username")
+            .get().addOnSuccessListener {
+                supportActionBar?.title = "Your name: ${it.value}"
+            }
 
-        dbRef.child("user").child(userAuth.uid.toString()).child("online").setValue(true)
+        dbRef.child("user")
+            .child(userAuth.uid.toString())
+            .child("online")
+            .setValue(true)
 
         rvUser.layoutManager = LinearLayoutManager(this)
         rvUser.adapter = adapter
@@ -55,7 +63,11 @@ class ChatActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        dbRef.child("user").child(userAuth.uid.toString()).child("online").setValue(false)
+        dbRef.child("user")
+            .child(userAuth.uid.toString())
+            .child("online")
+            .setValue(false)
+
         adapter.notifyDataSetChanged()
         super.onDestroy()
     }
@@ -72,4 +84,5 @@ class ChatActivity : AppCompatActivity() {
         }
         return true
     }
+
 }

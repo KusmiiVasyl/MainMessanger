@@ -1,16 +1,16 @@
 package com.example.messangerchat
 
-import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.messangerchat.classes.Message
 import com.example.messangerchat.classes.MessageAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_correspondence.*
+
 
 class CorrespondenceActivity : AppCompatActivity() {
 
@@ -34,6 +34,7 @@ class CorrespondenceActivity : AppCompatActivity() {
         receiverStorage = senderUid + receiverUid
 
         supportActionBar?.title = username
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#331f00")))
 
         messageList = ArrayList()
         messageAdapter = MessageAdapter(this, messageList)

@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import com.example.messangerchat.classes.User
 import com.google.firebase.auth.FirebaseAuth
@@ -199,6 +198,4 @@ class RegistrationActivity : AppCompatActivity() {
             }
         }.start()
     }
-
-
 }

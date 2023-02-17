@@ -2,28 +2,17 @@ package com.example.chatmessenger.classes
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
-import android.os.Looper
-import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.utils.widget.ImageFilterView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.messangerchat.CorrespondenceActivity
 import com.example.messangerchat.R
 import com.example.messangerchat.classes.User
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.activity_registration.*
-import java.net.URL
-import java.util.concurrent.Executors
-import java.util.logging.Handler
 
 
 class UserAdapter(val context: Context, val userList: ArrayList<User>) :
