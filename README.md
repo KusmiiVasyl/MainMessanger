@@ -1,5 +1,7 @@
 # MainMessanger
 
+The chat project performs user registration and provides the possibility of conducting a chat between users, firebase acts as a backend.
+
 <img width="925" alt="Page3" src="https://user-images.githubusercontent.com/90526809/232452341-88a3348e-180f-4ab3-9745-59ffe5b1743d.PNG">
 <img width="925" alt="Page4" src="https://user-images.githubusercontent.com/90526809/232452343-547944c2-d4d4-47ff-ae2b-a2875b72ab3c.PNG">
 <img width="921" alt="Page5" src="https://user-images.githubusercontent.com/90526809/232452344-5a1ab45e-f6d5-41bf-862d-eff01c79e72a.PNG">
